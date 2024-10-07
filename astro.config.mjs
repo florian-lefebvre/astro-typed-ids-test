@@ -74,7 +74,4 @@ const integration = ({ collections }) => {
 export default defineConfig({
   site: "https://example.com",
   integrations: [mdx(), sitemap(), integration({ collections: ["blog"] })],
-  experimental: {
-    contentLayer: true,
-  },
 });
