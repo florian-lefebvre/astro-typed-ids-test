@@ -21,9 +21,11 @@ const integration = ({ collections }) => {
   /** @type {URL} */
   let dtsURL;
 
+  const getDataStoreURL = () => new URL("./.astro/data-store.json", root)
+
   const loadStore = async () => {
     store = await MutableDataStore.fromFile(
-      new URL("./.astro/data-store.json", root)
+      getDataStoreURL()
     );
   };
 
@@ -59,9 +61,8 @@ const integration = ({ collections }) => {
         syncTypes();
         server.watcher.on("all", async (eventName, path) => {
           if (!["change"].includes(eventName)) return;
-
           // TODO: updates are kept in memory, need upstream fix
-          if (path === dtsURL.pathname) {
+          if (path === getDataStoreURL().pathname) {
             await loadStore();
             syncTypes();
           }
