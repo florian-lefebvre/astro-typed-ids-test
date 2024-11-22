@@ -61,7 +61,6 @@ const integration = ({ collections }) => {
         syncTypes();
         server.watcher.on("all", async (eventName, path) => {
           if (!["change"].includes(eventName)) return;
-          // TODO: updates are kept in memory, need upstream fix
           if (path === getDataStoreURL().pathname) {
             await loadStore();
             syncTypes();
