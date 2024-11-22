@@ -7,7 +7,7 @@ import { writeFileSync } from "node:fs";
 
 // TODO: handle non existing collections
 // TODO: handle collections param type when astro:content is not generated (see Erika tweet)
-// TODO: handle types during build (different location)
+// TODO: handle types during build and sync (different location)
 
 /**
  * @param {{ collections: Array<import('astro:content').DataCollectionKey> }} param_0
